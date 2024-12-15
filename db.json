@@ -1,0 +1,130 @@
+{
+  "places": [
+    {
+      "id": "1734151436987",
+      "name": "Alappuzha",
+      "description": "Most popular for its incredible backwaters, the city of Alleppey in Kerala is also a place to experience beaches, temples and traditional boat races. Its Ayurvedic spas and wellness centres make this a popular tourist destination.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Alappuzha_Boat_Beauty_W.jpg/288px-Alappuzha_Boat_Beauty_W.jpg",
+      "famousPlaces": [
+        {
+          "name": "Alappuzha Backwater",
+          "description": "Alappuzha is world renowned as the Venice of the East for good reason. With the sensuous Arabian Sea to its west and an intricate network of lakes, lagoons, and freshwater rivers weaving through its terrain, this backwater haven thrives with diverse wildlife and vibrant bird species.",
+          "images": [
+            "https://www.mattindia.com/wp-content/uploads/2023/04/Tourist-Attractions-In-Alappuzha-1000x500.jpg"
+          ]
+        }
+      ],
+      "culturalAttractions": [
+        {
+          "name": "Nehru Trophy Boat Race",
+          "description": " This is the most popular festival in Alappuzha, and it takes place every year on the second Saturday of August. The event is named after the first Prime Minister of India, Jawaharlal Nehru.",
+          "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/2/2c/Alappuzha-nadubhagam-chundan.jpg"
+          ]
+        }
+      ],
+      "mustExplore": [
+        {
+          "name": "Thumpoly Beach",
+          "description": "Glittering sands, beautiful waves, crystal clear water, and enchanting sunrise and sunset views make the Alappuzha beach one of the best places to visit in Kerala.",
+          "images": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnm1lMoDt784pEhK8wralLSeuNbfM_xLmRIg&s"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1734153097090",
+      "name": "Kannur",
+      "description": "Kannur, a district in thе Indian statе of Kеrala, is not just known for its brеathtaking landscapеs and rich cultural hеritagе, but also for its diverse and delectable cuisine.",
+      "imageUrl": "https://www.dsource.in/sites/default/files/resource/theyyam-kerala/theyyam/images/02_new.jpg",
+      "famousPlaces": [
+        {
+          "name": " Paithalmala",
+          "description": "Paithalmala, the highest peak in Kannur District, stands as a beacon for trekkers and nature enthusiasts. At an elevation of 1371.6 meters, it offers an exhilarating trek through lush forests leading up to a grassy hilltop with stunning views.",
+          "images": [
+            "https://static2.tripoto.com/media/filter/tst/img/267346/SpotDocument/1506081796_1506081773_pythalmala_trek_indiahikes_amrtith_harish_view_3_1.jpg"
+          ]
+        }
+      ],
+      "culturalAttractions": [
+        {
+          "name": "Theyyam",
+          "description": "The most well-known of these are Gulikan, Pottan, Wayanadu Kulaven, Raktha Chamundi, Kari Chamundi, Muchilottu Bhagavathi etc. Some types of theyyam have fire in their hair, such as Theechamundi",
+          "images": [
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/48c92d196668523.6623a60bc527c.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gulikan_Theyyam_Vellattam_By_Shagil_kannur.jpg/1200px-Gulikan_Theyyam_Vellattam_By_Shagil_kannur.jpg"
+          ]
+        },
+        {
+          "name": "Fort",
+          "description": "Over the years Kannur has been a melting pot of cultures, influenced by Arab, Dutch, Portuguese, and British settlers. The remnants of colonial architecture stand as testament to this rich past, inviting history buffs to explore ancient structures such as the imposing St. Angelo Fort.",
+          "images": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIBo1RWTX3WNdTcOfsonYlKHlMtC-DQbfbow&s"
+          ]
+        }
+      ],
+      "mustExplore": [
+        {
+          "name": "Arakkal Museum",
+          "description": "The Arakkal Museum is a museum dedicated to the Arakkal family, the only Muslim royal family in Kerala, India. The museum is actually a section of the Arakkalkettu (Arakkal Royal Palace). The durbar hall section of the palace has been converted into a museum by the Government of Kerala. It was opened in July 2005 after a Rs. 9,000,000 renovation.",
+          "images": [
+            "https://www.indianetzone.com/public/admin/uploadImage/1_Arakkal_Kettu_Museum_2.jpg"
+          ]
+        },
+        {
+          "name": "Ezhimala",
+          "description": "Ezhimala (hill, Kannur) Ezhimala, a hill reaching a height of 286 metres (938 ft), is located near Payyanur, in Kannur district of Kerala, South India.",
+          "images": [
+            "https://kannurairport.aero/kial/public/uploads/destination_img/HLeQbvKdhPjr0ImY6LqaunG5GRhZxg.jpg"
+          ]
+        }
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "id": "1734154285230",
+      "name": "Baywatch Beach Resort",
+      "description": "Whether you’re seeking a romantic escape, a family adventure, or a corporate retreat that breaks the mold, our family-run resort blends 5-star service with 4-star pricing to make your dream getaway a reality.",
+      "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/83484100.jpg?k=8e917a1167cfe4c2ad3a1b50199e6e5aed5587b9a01462f1faa44f5404867916&o=&hp=1",
+      "placeId": "1734151436987",
+      "pricePerNight": 45000,
+      "amenities": [
+        "Pool",
+        "Free Wifi",
+        "Family rooms",
+        "Free parking"
+      ],
+      "availability": true,
+      "rooms": [
+        {
+          "type": "Royal Suite",
+          "capacity": "0",
+          "features": [
+            "Free breakfast",
+            "Pool",
+            "Business Centre"
+          ],
+          "images": [
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/f7/c4/f4/photo0jpg.jpg?w=1200&h=-1&s=1",
+            "https://pix10.agoda.net/hotelImages/842/84286/84286_14021819530018380784.jpg?ca=2&ce=1&s=414x232",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/579094269.jpg?k=12189b6b68eb8446452abb39383fa435249420d3b3870b79c3dd29f171135425&o=&hp=1"
+          ]
+        }
+      ],
+      "surroundings": [
+        {
+          "name": "Alappuzha Beach",
+          "description": "Alleppey Beach is a great spot for a quick evening visit and have fun at the beach.",
+          "distance": "35Km",
+          "images": [
+            "https://photo.webindia123.com/gallery/33534/aleppuzha%20beach_Main_800.jpg",
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/92/53/58/alappuzha-beach.jpg?w=1200&h=1200&s=1",
+            "https://www.hlimg.com/images/things2do/738X538/b_1506794886t.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+.feature-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding-bottom: 20px;
+}
+
+.feature-header {
+  background-color: #1976d2 !important;
+  
+}
+
+.feature-content {
+  padding: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.feature-image-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.feature-details-card {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.place-title, .place-full-description {
+  text-align: center;
+}
+
+.view-hotels-button {
+  display: block;
+  margin: 20px auto !important;
+}
+
+.image-scroll-container {
+  position: relative;
+  overflow: hidden;
+  height: 180px;
+}
+
+.auto-scroll-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.image-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Card styles */
+/* .MuiCard-root {
+  transition: transform 0.2s;
+  max-height: 320px;
+}
+
+.MuiCard-root:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+} */
+
+/* Typography */
+.place-title {
+  font-size: 1.5rem !important;
+  margin-bottom: 12px !important;
+}
+
+.place-full-description {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .feature-content {
+    padding: 12px;
+  }
+  
+  .feature-image-card,
+  .feature-details-card {
+    height: 250px;
+  }
+}

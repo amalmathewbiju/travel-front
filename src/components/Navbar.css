@@ -1,0 +1,23 @@
+.nav-page {
+    margin: 100px;
+  }
+  
+  .nav-header {
+    background-color: #1976d2;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+  
+  .nav-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
