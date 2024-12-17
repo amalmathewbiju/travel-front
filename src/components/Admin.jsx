@@ -5,7 +5,6 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import axios from 'axios';
 
 const Admin = () => {
-  // Place Form Data State
   const [placeFormData, setPlaceFormData] = useState({
       name: '',
       description: '',
@@ -15,7 +14,6 @@ const Admin = () => {
       mustExplore: [{ name: '', description: '', images: [''] }]
   });
 
-  // Hotel Form Data State
   const [hotelFormData, setHotelFormData] = useState({
     name: '',
     description: '',
@@ -31,10 +29,7 @@ const Admin = () => {
 const [editMode, setEditMode] = useState(false);
 const [selectedItem, setSelectedItem] = useState(null);
 const [hotels, setHotels] = useState([]);
-
-useEffect(() => {
-    fetchHotels();
-}, []);
+const [places, setPlaces] = useState([]);
 
 const fetchHotels = async () => {
     try {
@@ -45,41 +40,42 @@ const fetchHotels = async () => {
     }
 };
 
+const fetchPlaces = async () => {
+  try {
+      const response = await axios.get('http://localhost:3000/places');
+      setPlaces(response.data);
+  } catch (error) {
+      console.error('Error fetching places:', error);
+  }
+};
+const handleFeatureChange = (category, index, field, value, imageIndex = null) => {
+  const updatedData = { ...placeFormData };
+  if (imageIndex !== null) {
+    updatedData[category][index].images[imageIndex] = value;
+  } else {
+    updatedData[category][index][field] = value;
+  }
+  setPlaceFormData(updatedData);
+};
 
-  const [places, setPlaces] = useState([]);
+const addFeature = (category) => {
+  setPlaceFormData({
+    ...placeFormData,
+    [category]: [...placeFormData[category], { name: '', description: '', images: [''] }]
+  });
+};
+
+  
+
+  useEffect(() => {
+    fetchHotels();
+}, []);
 
   useEffect(() => {
     fetchPlaces();
 }, []);
 
-const fetchPlaces = async () => {
-    try {
-        const response = await axios.get('http://localhost:3000/places');
-        setPlaces(response.data);
-    } catch (error) {
-        console.error('Error fetching places:', error);
-    }
-};
 
-  // Place Form Handlers
-  const handleFeatureChange = (category, index, field, value, imageIndex = null) => {
-    const updatedData = { ...placeFormData };
-    if (imageIndex !== null) {
-      updatedData[category][index].images[imageIndex] = value;
-    } else {
-      updatedData[category][index][field] = value;
-    }
-    setPlaceFormData(updatedData);
-  };
-
-  const addFeature = (category) => {
-    setPlaceFormData({
-      ...placeFormData,
-      [category]: [...placeFormData[category], { name: '', description: '', images: [''] }]
-    });
-  };
-
-  // Place handlers
 const handleEditPlace = async (placeId) => {
   try {
       const response = await axios.get(`http://localhost:3000/places/${placeId}`);
@@ -100,7 +96,6 @@ const handleUpdatePlace = () => {
       culturalAttractions: placeFormData.culturalAttractions,
       mustExplore: placeFormData.mustExplore
   };
-
   axios.put(`http://localhost:3000/places/${selectedItem}`, placeData)
       .then(response => {
           alert('Place updated successfully!');
@@ -134,13 +129,11 @@ const handleDeletePlace = async (placeId) => {
   }
 };
 
-// Hotel handlers
 const handleEditHotel = async (hotelId) => {
   try {
       const response = await axios.get(`http://localhost:3000/hotels/${hotelId}`);
       const hotelData = response.data;
       
-      // Format the data for form fields
       setHotelFormData({
           ...hotelData,
           amenities: Array.isArray(hotelData.amenities) 
@@ -241,19 +234,11 @@ const resetPlaceForm = () => {
             item.name && item.description && item.images.some(img => img.trim() !== '')
         )
     };
-
     axios.post('http://localhost:3000/places', placeData)
         .then(response => {
             alert('Place added successfully!');
             fetchPlaces();
-            setPlaceFormData({
-                name: '',
-                description: '',
-                imageUrl: '',
-                famousPlaces: [{ name: '', description: '', images: [''] }],
-                culturalAttractions: [{ name: '', description: '', images: [''] }],
-                mustExplore: [{ name: '', description: '', images: [''] }]
-            });
+            resetPlaceForm();
         })
         .catch(error => {
             console.error('Error adding place:', error);
@@ -336,8 +321,6 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
 
   
   
-
-  // Hotel Form Handlers
   const handleHotelChange = (e) => {
     const { name, value } = e.target;
     setHotelFormData({ ...hotelFormData, [name]: value });
@@ -380,11 +363,6 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
             alert('Failed to add hotel. Check console for details.');
         });
 };
-
-
-
-
-  
 
   const renderFeatureSection = (category, title) => (
     <Box sx={{ mt: 4 }}>
@@ -445,70 +423,68 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
   );
 
   return (
-    <Box sx={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
-      {/* Place Form Section */}
+    <Box sx={{ padding: '70px', maxWidth: '800px', margin: 'auto' }}>
       <Box sx={{ mb: 6 }}>
         <Typography variant="h4" gutterBottom>
           Admin: Add Place
         </Typography>
         <form onSubmit={(e) => {
-    e.preventDefault();
-    editMode ? handleUpdatePlace() : handlePlaceSubmit();
-}}>
-    <TextField
-        name="name"
-        label="Place Name"
-        value={placeFormData.name}
-        onChange={(e) => setPlaceFormData({...placeFormData, name: e.target.value})}
-        fullWidth
-        required
-        margin="normal"
-    />
-    <TextField
-        name="description"
-        label="Description"
-        value={placeFormData.description}
-        onChange={(e) => setPlaceFormData({...placeFormData, description: e.target.value})}
-        fullWidth
-        required
-        margin="normal"
-    />
-    <TextField
-        name="imageUrl"
-        label="Main Image URL"
-        value={placeFormData.imageUrl}
-        onChange={(e) => setPlaceFormData({...placeFormData, imageUrl: e.target.value})}
-        fullWidth
-        required
-        margin="normal"
-    />
+              e.preventDefault();
+              editMode ? handleUpdatePlace() : handlePlaceSubmit();
+          }}>
+              <TextField
+                  name="name"
+                  label="Place Name"
+                  value={placeFormData.name}
+                  onChange={(e) => setPlaceFormData({...placeFormData, name: e.target.value})}
+                  fullWidth
+                  required
+                  margin="normal"
+              />
+              <TextField
+                  name="description"
+                  label="Description"
+                  value={placeFormData.description}
+                  onChange={(e) => setPlaceFormData({...placeFormData, description: e.target.value})}
+                  fullWidth
+                  required
+                  margin="normal"
+              />
+              <TextField
+                  name="imageUrl"
+                  label="Main Image URL"
+                  value={placeFormData.imageUrl}
+                  onChange={(e) => setPlaceFormData({...placeFormData, imageUrl: e.target.value})}
+                  fullWidth
+                  required
+                  margin="normal"
+              />
 
-    {renderFeatureSection('famousPlaces', 'Famous Places')}
-    {renderFeatureSection('culturalAttractions', 'Cultural Attractions')}
-    {renderFeatureSection('mustExplore', 'Must Explore')}
+              {renderFeatureSection('famousPlaces', 'Famous Places')}
+              {renderFeatureSection('culturalAttractions', 'Cultural Attractions')}
+              {renderFeatureSection('mustExplore', 'Must Explore')}
 
-    <Button 
-        type="submit" 
-        variant="contained" 
-        color="primary" 
-        fullWidth 
-        sx={{ mt: 3 }}
-    >
-        {editMode ? 'Update Place' : 'Add Place'}
-    </Button>
-</form>
+              <Button 
+                  type="submit" 
+                  variant="contained" 
+                  color="primary" 
+                  fullWidth 
+                  sx={{ mt: 3 }}
+              >
+                  {editMode ? 'Update Place' : 'Add Place'}
+              </Button>
+          </form>
 
       </Box>
 
-      {/* Hotel Form Section */}
       <Box>
         <Typography variant="h4" gutterBottom>
           Admin: Add Hotel
         </Typography>
         <form onSubmit={(e) => {
     e.preventDefault();
-    editMode ? handleUpdateHotel() : handleHotelSubmit();
-}}>
+        editMode ? handleUpdateHotel() : handleHotelSubmit();
+        }}>
           <FormControl fullWidth margin="normal">
             <InputLabel>Select Place</InputLabel>
             <Select
@@ -584,75 +560,74 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
             margin="normal"
             helperText="Enter amenities separated by commas (e.g., Pool, Wifi, Restaurant)"
           />
-          {/* Rooms Section */}
-<Typography variant="h6" sx={{ mt: 4 }}>Rooms</Typography>
-{hotelFormData.rooms.map((room, roomIndex) => (
-  <Box key={roomIndex} sx={{ mt: 2, p: 2, border: '1px solid #ddd', borderRadius: 1 }}>
-    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-      <IconButton onClick={() => removeRoom(roomIndex)} color="error">
-        <DeleteOutlineIcon />
-      </IconButton>
-    </Box>
+              
+    <Typography variant="h6" sx={{ mt: 4 }}>Rooms</Typography>
+    {hotelFormData.rooms.map((room, roomIndex) => (
+      <Box key={roomIndex} sx={{ mt: 2, p: 2, border: '1px solid #ddd', borderRadius: 1 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <IconButton onClick={() => removeRoom(roomIndex)} color="error">
+            <DeleteOutlineIcon />
+          </IconButton>
+        </Box>
     
-    <TextField
-      label="Room Type"
-      value={room.type}
-      onChange={(e) => handleRoomChange(roomIndex, 'type', e.target.value)}
-      fullWidth
-      margin="normal"
-    />
-    
-    <TextField
-      label="Capacity"
-      type="number"
-      value={room.capacity}
-      onChange={(e) => handleRoomChange(roomIndex, 'capacity', e.target.value)}
-      fullWidth
-      margin="normal"
-    />
-    
-    <TextField
-      label="Features (comma-separated)"
-      value={room.features}
-      onChange={(e) => handleRoomChange(roomIndex, 'features', e.target.value)}
-      fullWidth
-      margin="normal"
-    />
-    
-    {room.images.map((image, imgIndex) => (
-      <Box key={imgIndex} sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-        <TextField
-          label={`Room Image URL ${imgIndex + 1}`}
-          value={image}
-          onChange={(e) => handleRoomImageChange(roomIndex, imgIndex, e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <IconButton onClick={() => removeRoomImage(roomIndex, imgIndex)} color="error">
-          <DeleteOutlineIcon />
-        </IconButton>
-      </Box>
-    ))}
-    
-    <Button 
-      startIcon={<AddCircleOutlineIcon />}
-      onClick={() => addRoomImage(roomIndex)}
-      sx={{ mt: 1 }}
-    >
-      Add Room Image
-    </Button>
-  </Box>
-))}
+            <TextField
+              label="Room Type"
+              value={room.type}
+              onChange={(e) => handleRoomChange(roomIndex, 'type', e.target.value)}
+              fullWidth
+              margin="normal"
+            />
+            
+            <TextField
+              label="Capacity"
+              type="number"
+              value={room.capacity}
+              onChange={(e) => handleRoomChange(roomIndex, 'capacity', e.target.value)}
+              fullWidth
+              margin="normal"
+            />
+            
+            <TextField
+              label="Features (comma-separated)"
+              value={room.features}
+              onChange={(e) => handleRoomChange(roomIndex, 'features', e.target.value)}
+              fullWidth
+              margin="normal"
+            />
+            
+            {room.images.map((image, imgIndex) => (
+              <Box key={imgIndex} sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                <TextField
+                  label={`Room Image URL ${imgIndex + 1}`}
+                  value={image}
+                  onChange={(e) => handleRoomImageChange(roomIndex, imgIndex, e.target.value)}
+                  fullWidth
+                  margin="normal"
+                />
+                <IconButton onClick={() => removeRoomImage(roomIndex, imgIndex)} color="error">
+                  <DeleteOutlineIcon />
+                </IconButton>
+              </Box>
+            ))}
+            
+            <Button 
+              startIcon={<AddCircleOutlineIcon />}
+              onClick={() => addRoomImage(roomIndex)}
+              sx={{ mt: 1 }}
+            >
+              Add Room Image
+            </Button>
+          </Box>
+        ))}
 
-<Button 
-  startIcon={<AddCircleOutlineIcon />}
-  onClick={addRoom}
-  sx={{ mt: 2 }}
->
-  Add Room
-</Button>
+        <Button 
+          startIcon={<AddCircleOutlineIcon />}
+          onClick={addRoom}
+          sx={{ mt: 2 }}
+        >
+          Add Room
+        </Button>
 
-{/* Surroundings Section */}
 <Typography variant="h6" sx={{ mt: 4 }}>Surroundings</Typography>
 {hotelFormData.surroundings.map((surrounding, surroundingIndex) => (
   <Box key={surroundingIndex} sx={{ mt: 2, p: 2, border: '1px solid #ddd', borderRadius: 1 }}>
@@ -730,7 +705,6 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
     </Button>
 </form>
       </Box>
-      {/* Display Existing Places */}
 <Box sx={{ mt: 4 }}>
     <Typography variant="h5">Existing Places</Typography>
     {places.map((place) => (
@@ -742,7 +716,6 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
     ))}
 </Box>
 
-{/* Display Existing Hotels */}
 <Box sx={{ mt: 4 }}>
     <Typography variant="h5">Existing Hotels</Typography>
     {hotels.map((hotel) => (

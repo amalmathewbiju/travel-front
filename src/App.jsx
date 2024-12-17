@@ -10,23 +10,24 @@ import Details from './components/Details';
 import Booking from './components/Booking';
 import FirstPage from './components/FirstPage';
 import Footer from './components/Footer';
+import AdminRoute from './components/AdminRoute';
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
-        <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>} />
-        <Route path="/hotels/:placeId" element={<PrivateRoute><Hotels /></PrivateRoute>} />
-        <Route path="/feature/:placeId" element={<PrivateRoute><Feature /></PrivateRoute>} />
-        <Route path="/details/:hotelId" element={<PrivateRoute><Details /></PrivateRoute>} />
-        <Route path="/booking" element={<PrivateRoute><Booking /></PrivateRoute>} />
-        <Route path="/first" element={<PrivateRoute><FirstPage /></PrivateRoute>} />
-      </Routes>
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
+      <Route path="/hotels/:placeId" element={<PrivateRoute><Hotels /></PrivateRoute>} />
+      <Route path="/feature/:placeId" element={<PrivateRoute><Feature /></PrivateRoute>} />
+      <Route path="/details/:hotelId" element={<PrivateRoute><Details /></PrivateRoute>} />
+      <Route path="/booking" element={<PrivateRoute><Booking /></PrivateRoute>} />
+      <Route path="/first" element={<PrivateRoute><FirstPage /></PrivateRoute>} />
+    </Routes>
+    <Footer />
+  </>
   );
 }
 

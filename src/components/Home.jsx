@@ -45,7 +45,6 @@ const Home = () => {
   return (
     <Box className="home-container">
       <Navbar/>
-
       <Box className="search-section">
         <TextField
           className="search-input"
@@ -59,13 +58,13 @@ const Home = () => {
 
       <Box className="main-content">
         <Typography variant="h4" className="welcome-text">
-          The Most beautiful places in India
-        </Typography><br />
+          Welcome to Kerala
+        </Typography><br /><br />
         <Grid container spacing={4} className="places-grid">
           {filteredPlaces.length > 0 ? (
             filteredPlaces.map((place) => (
               <Grid item xs={12} sm={6} md={3} key={place._id} className="grid-item">
-                <Card className="place-card" onClick={() => handleCardClick(place._id)}>
+                <Card className="place-card" onClick={() => handleCardClick(place._id)} sx={{ height: '100%' }}>
                   <CardMedia
                     className="place-image"
                     component="img"

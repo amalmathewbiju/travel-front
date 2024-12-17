@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Typography } from '@mui/material';
+import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
@@ -14,7 +14,7 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:3000/auth/login', {
         username: email,
-        password
+        password,
       });
       localStorage.setItem('token', response.data.token);
       navigate('/home');
@@ -24,41 +24,47 @@ const Login = () => {
   };
 
   return (
-    <Box className="auth-container">
-      <Typography variant="h4" component="h1" gutterBottom>Login</Typography>
-      <form className="auth-form" onSubmit={handleLoginSubmit}>
-        <TextField
-          label="Email"
-          type="email"
+    <Grid container className="auth-container">
+      <Grid item xs={12} sm={4}>
+        <img src="https://i.pinimg.com/474x/a5/b2/f6/a5b2f6bc9835e71cb5faa6a7654b2659.jpg" alt="Login" style={{ width: '100%', height: 'auto',marginTop:'50px',borderRadius:'50px' }} />
+      </Grid>
+      <Grid item xs={12} sm={7}>
+        <Typography variant="h4" component="h1" align='center' gutterBottom>Login Form</Typography>
+        <form className="auth-form" onSubmit={handleLoginSubmit}>
+          <TextField
+            label="Email"
+            type="email"
+            fullWidth
+            required
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            required
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            Login
+          </Button>
+          <Button
+          color="primary"
+          variant="contained"
           fullWidth
-          required
-          margin="normal"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          label="Password"
-          type="password"
-          fullWidth
-          required
-          margin="normal"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Login
+          onClick={() => navigate('/register')}
+          sx={{ mt: 2 }}
+        >
+          Register
         </Button>
-      </form>
-      <Button
-        color="primary"
-        variant="contained"
-        fullWidth
-        onClick={() => navigate('/register')}
-        sx={{ mt: 2 }}
-      >
-        Register
-      </Button>
-    </Box>
+        </form>
+        
+      </Grid>
+    </Grid>
   );
 };
 

@@ -1,44 +1,57 @@
 .feature-container {
-  min-height: 100vh;
-  background-color: #f8f9fa;
   padding-bottom: 20px;
-}
-
-.feature-header {
-  background-color: #1976d2 !important;
-  
 }
 
 .feature-content {
   padding: 16px;
-  max-width: 700px;
+  max-width: 1200px; 
   margin: 0 auto;
+  display: flex;
+}
+
+.features-section {
+  flex: 1; 
 }
 
 .feature-image-card {
   max-width: 800px;
   margin: 0 auto;
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; 
+}
+
+.feature-image-card:hover {
+  transform: scale(1.02); 
 }
 
 .feature-details-card {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-}
-
-.place-title, .place-full-description {
-  text-align: center;
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .view-hotels-button {
   display: block;
   margin: 20px auto !important;
+  background-color: #1976d2; 
+  color: white; 
+  border-radius: 4px; 
+  padding: 10px 20px; 
+  transition: background-color 0.3s; 
+}
+
+.view-hotels-button:hover {
+  background-color: #155a8a; 
 }
 
 .image-scroll-container {
   position: relative;
   overflow: hidden;
   height: 180px;
+  border-radius: 8px; 
 }
 
 .auto-scroll-images {
@@ -52,41 +65,48 @@
 }
 
 
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+.MuiCard-root {
+  border-radius: 8px; 
 }
 
-/* Card styles */
-/* .MuiCard-root {
-  transition: transform 0.2s;
-  max-height: 320px;
-}
-
-.MuiCard-root:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-} */
-
-/* Typography */
 .place-title {
-  font-size: 1.5rem !important;
+  font-size: 1.8rem !important; 
   margin-bottom: 12px !important;
+  color: #1976d2; 
 }
 
 .place-full-description {
-  font-size: 0.9rem !important;
+  font-size: 1rem !important; 
   line-height: 1.5 !important;
+  color: #555; 
 }
 
-/* Responsive */
+.trip-planning {
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  padding: 16px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  position: sticky; 
+  top: 20px; 
+  height: calc(100vh - 40px); 
+  overflow-y: auto; 
+}
+
 @media (max-width: 960px) {
   .feature-content {
     padding: 12px;
   }
-  
+
   .feature-image-card,
   .feature-details-card {
-    height: 250px;
+    height: auto; 
+  }
+
+  .place-title {
+    font-size: 1.5rem !important; 
+  }
+
+  .place-full-description {
+    font-size: 0.85rem !important; 
   }
 }

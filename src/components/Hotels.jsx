@@ -20,17 +20,15 @@ const Hotels = () => {
   };
 
   useEffect(() => {
-    // Fetch place name
+  
     axios.get(`http://localhost:3000/places/${placeId}`)
         .then((response) => {
             setPlaceName(response.data.name);
         })
         .catch((error) => console.error('Error fetching place:', error));
-
-    // Fetch hotels for the specific place
     axios.get(`http://localhost:3000/hotels/places/${placeId}`)
         .then((response) => {
-            console.log('Hotels data:', response.data); // Add this for debugging
+            console.log('Hotels data:', response.data);
             setHotels(response.data);
             setFilteredHotels(response.data);
         })
@@ -84,7 +82,7 @@ const handleBooking = (hotel) => {
                   />
                   <CardContent className="hotel-content">
                     <Typography className="hotel-name">
-                      {hotel.name}
+                      <b>{hotel.name}</b>
                     </Typography>
                     <Typography className="hotel-description">
                       {hotel.description}
@@ -93,13 +91,13 @@ const handleBooking = (hotel) => {
                       ₹{hotel.pricePerNight} per night
                     </Typography>
                     <Button
-    className="book-button"
-    variant="contained"
-    color="primary"
-    onClick={() => handleBooking(hotel)}
->
-    View Details
-</Button>
+                          className="book-button"
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleBooking(hotel)}
+                      >
+                          View Details
+                      </Button>
 
                   </CardContent>
                 </Card>
