@@ -43,7 +43,7 @@ const Register = () => {
   return (
     <Grid container className="auth-container">
       <Grid item xs={12} sm={5} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <img src="https://i.pinimg.com/474x/a5/b2/f6/a5b2f6bc9835e71cb5faa6a7654b2659.jpg" alt="Register" style={{ width: '100%', height: 'auto',borderRadius:'50px',marginTop:'50px' }} />
+        <img src="https://i.pinimg.com/736x/90/c8/aa/90c8aacadb31c6408d760d399e5262a1.jpg" alt="Register" style={{ width: '100%', height: 'auto',borderRadius:'50px',marginTop:'50px' }} />
       </Grid>
       <Grid item xs={12} sm={7}>
         <Box sx={{ padding: 2 }}>

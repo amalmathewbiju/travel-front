@@ -1,48 +1,105 @@
 import React from 'react';
 import { Container, Typography, Grid, Card, CardContent, CardMedia, Box } from "@mui/material";
 import Navbar from './Navbar';
+import './FirstPage.css';
 
 
 export default function FirstPage() {
   return (
     <>
     <Navbar/>
-    <Container maxWidth="lg">
-      {/* About Kerala Tourism Section */}
-      <Box sx={{ my: 5 }}>
+    <Container maxWidth="lg" className="container">
+        {/* About Kerala Tourism Section */}
+        <Box className="section">
+          <Typography variant="h4" className="section-title">
+            About Kerala
+          </Typography>
+          <Typography variant="body1" className="typography-body">
+            Kerala, often called “God’s Own Country,” is a tropical paradise located on the southwestern coast of India. With its lush landscapes, serene backwaters, golden beaches, and rich cultural heritage, Kerala is one of the most sought-after travel destinations in the world. It is bordered by the Arabian Sea to the west, the Western Ghats to the east, and is known for its breathtaking natural beauty, which includes dense forests, tea plantations, waterfalls, and unique wildlife.
+            Culture and tradition form the heart of Kerala, and the state’s rich history can be seen in its vibrant festivals, classical arts, and architecture.
+          </Typography>
+
+          <Grid container justifyContent="center" spacing={3}>
+            <Grid item xs={12} md={5}>
+              <Box className="img-container">
+              <img
+                  src="https://png.pngtree.com/thumb_back/fh260/background/20241023/pngtree-honoring-kerala-s-beauty-and-traditions-happy-piravi-image_16443512.jpg"
+                  alt="Kerala Tourism"
+                />
+                <img
+                  src="https://png.pngtree.com/thumb_back/fh260/background/20241023/pngtree-kerala-piravi-celebrating-god-s-own-country-image_16443513.jpg"
+                  alt="Kerala Tourism"
+                />
+                <img
+                  src="https://png.pngtree.com/thumb_back/fh260/background/20241023/pngtree-happy-kerala-piravi-celebrating-our-heritage-and-pride-image_16443535.jpg"
+                  alt="Kerala Tourism"
+                />
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+
+{/* Memories for a Lifetime Section */}
+<Box sx={{ my: 5 }}>
         <Typography variant="h4" gutterBottom align="center">
-          About Kerala
+          Memories for a Lifetime
         </Typography>
         <Typography variant="body1" paragraph>
-          Kerala, often called “God’s Own Country,” is a tropical paradise located on the southwestern coast of India. With its lush landscapes, serene backwaters, golden beaches, and rich cultural heritage, Kerala is one of the most sought-after travel destinations in the world. It is bordered by the Arabian Sea to the west, the Western Ghats to the east, and is known for its breathtaking natural beauty, which includes dense forests, tea plantations, waterfalls, and unique wildlife.
-          Culture and tradition form the heart of Kerala, and the state’s rich history can be seen in its vibrant festivals, classical arts, and architecture.
+          Kerala is a place where memories are created for a lifetime. From the serene backwaters to the
+          vibrant festivals, every moment spent in Kerala will be cherished forever. Whether it's a houseboat
+          ride or a visit to the tea gardens, you'll never forget the tranquility and beauty of this paradise.
         </Typography>
-        
-        <Grid container justifyContent="center" spacing={3}>
-          <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-              margin: "10px"
-            }}
-          >
-            <img
-              src="https://smarthistory.org/wp-content/uploads/2022/08/kathakali-mask.png"
-              alt="Kerala Tourism"
-              style={{
-                width: "1000px",
-                borderRadius: "8px",
-                height: "500px",
-              }}
-            />
-            </Box>
+        <Grid container spacing={4} justifyContent="center">
+        <Grid item xs={12} sm={6} md={4}>
+            <Card sx={{ height: '100%' }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image="https://img.indianautosblog.com/2019/01/10/modified-hindustan-contessa-front-three-quarters-m-123b.jpg"
+                alt="Kerala Backwater"
+              />
+              <CardContent>
+                <Typography variant="h6">Car Modification</Typography>
+                <Typography variant="body2">
+                Kerala is known for its car modification culture, with tasteful and classic mods, and off-road vehicles.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card sx={{ height: '100%' }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Fvertical%2Fvaliyaparamba-backwaters-1724155653_00094e1ee024e44c6744.webp&w=3840&q=75"
+                alt="Kerala Backwater"
+              />
+              <CardContent>
+                <Typography variant="h6">Backwater Experience</Typography>
+                <Typography variant="body2">
+                  Experience the calm and beauty of Kerala's backwaters, a serene and unforgettable journey.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card sx={{ height: '100%' }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image="https://ayurvedichealingvillage.com/wp-content/uploads/2024/11/C-2.jpg"
+                alt="Kerala Backwater"
+              />
+              <CardContent>
+                <Typography variant="h6">A Global Attraction for Tourists</Typography>
+                <Typography variant="body2">
+                  Kerala attracts foreigners with its breathtaking landscapes, tranquil backwaters, rich culture, Ayurvedic treatments, pristine beaches, and vibrant festivals, offering a perfect blend of relaxation and adventure.
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       </Box>
-
       {/* Experience Kerala's Wellness Section */}
       <Box sx={{ my: 5 }}>
         <Typography variant="h4" gutterBottom align="center">
@@ -66,6 +123,7 @@ export default function FirstPage() {
               </CardContent>
             </Card>
           </Grid>
+          
           <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ height: '100%' }}>
               <CardMedia
@@ -102,51 +160,7 @@ export default function FirstPage() {
         </Grid>
       </Box>
 
-      {/* Memories for a Lifetime Section */}
-      <Box sx={{ my: 5 }}>
-        <Typography variant="h4" gutterBottom align="center">
-          Memories for a Lifetime
-        </Typography>
-        <Typography variant="body1" paragraph>
-          Kerala is a place where memories are created for a lifetime. From the serene backwaters to the
-          vibrant festivals, every moment spent in Kerala will be cherished forever. Whether it's a houseboat
-          ride or a visit to the tea gardens, you'll never forget the tranquility and beauty of this paradise.
-        </Typography>
-        <Grid container spacing={4} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <Card sx={{ height: '100%' }}>
-              <CardMedia
-                component="img"
-                height="200"
-                image="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Fvertical%2Fvaliyaparamba-backwaters-1724155653_00094e1ee024e44c6744.webp&w=3840&q=75"
-                alt="Kerala Backwater"
-              />
-              <CardContent>
-                <Typography variant="h6">Backwater Experience</Typography>
-                <Typography variant="body2">
-                  Experience the calm and beauty of Kerala's backwaters, a serene and unforgettable journey.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card sx={{ height: '100%' }}>
-              <CardMedia
-                component="img"
-                height="200"
-                image="https://ayurvedichealingvillage.com/wp-content/uploads/2024/11/C-2.jpg"
-                alt="Kerala Backwater"
-              />
-              <CardContent>
-                <Typography variant="h6">A Global Attraction for Tourists</Typography>
-                <Typography variant="body2">
-                  Kerala attracts foreigners with its breathtaking landscapes, tranquil backwaters, rich culture, Ayurvedic treatments, pristine beaches, and vibrant festivals, offering a perfect blend of relaxation and adventure.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Box>
+      
 
       <Box sx={{ my: 5 }}>
         <Typography variant="h4" gutterBottom align="center">
@@ -204,7 +218,7 @@ export default function FirstPage() {
               <CardMedia
                 component="img"
                 height="300"
-                image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Puliyoor_Kali_Theyyam_at_Mathamangalam.jpg/220px-Puliyoor_Kali_Theyyam_at_Mathamangalam.jpg"
+                image="https://broadbeankannur.com/globalpannel/public/images/1706611752.jpg"
                 alt="Theyyam    "
               />
               <CardContent>

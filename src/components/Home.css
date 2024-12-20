@@ -1,29 +1,12 @@
 
-.home-container{
-  margin: 72px;
-}
-
 .search-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  
 }
 
 .search-input {
   max-width: 600px;
   width: 100%;
-}
-
-.welcome-text {
-  color: #333333;
-  text-align: center;
-  font-size: 2rem;
-  margin: 50px;
-  font-weight: bold;
-}
-
-.grid-item {
-  display: flex;
-  margin: 30px;
 }

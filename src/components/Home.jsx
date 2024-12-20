@@ -44,33 +44,34 @@ const Home = () => {
 
   return (
     <Box className="home-container">
-      <Navbar/>
-      <Box className="search-section">
-        <TextField
-          className="search-input"
-          variant="outlined"
-          placeholder="Search destinations..."
-          fullWidth
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </Box>
-
-      <Box className="main-content">
-        <Typography variant="h4" className="welcome-text">
+      <Navbar />
+        <Box className="search-section" >
+          <TextField
+            className="search-input"
+            variant="outlined"
+            placeholder="Search destinations..."
+            fullWidth
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            sx={{ borderRadius: '20px', backgroundColor: 'white' }}
+            />
+        </Box>
+      <Box className="main-content" style={{ margin: '72px' }}>
+        <Typography variant="h4" className="welcome-text" align="center" gutterBottom>
           Welcome to Kerala
-        </Typography><br /><br />
+        </Typography><br/>
         <Grid container spacing={4} className="places-grid">
           {filteredPlaces.length > 0 ? (
             filteredPlaces.map((place) => (
-              <Grid item xs={12} sm={6} md={3} key={place._id} className="grid-item">
-                <Card className="place-card" onClick={() => handleCardClick(place._id)} sx={{ height: '100%' }}>
+              <Grid item xs={12} sm={6} md={4} key={place._id} className="grid-item">
+                <Card className="place-card" onClick={() => handleCardClick(place._id)} sx={{ height: '100%', borderRadius: '15px', boxShadow: 3 }}>
                   <CardMedia
                     className="place-image"
                     component="img"
                     height="200"
                     image={place.imageUrl || `https://via.placeholder.com/300x200?text=${place.name}`}
                     alt={place.name}
+                    sx={{ borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}
                   />
                   <CardContent className="place-content">
                     <Typography variant="h6" className="place-name">
@@ -91,20 +92,20 @@ const Home = () => {
                         View Hotels
                       </Button>
                       <Button
-                          variant="outlined"
-                          color="primary"
-                          size="small"
-                          onClick={() => handleCardClick(place._id)}
-                        >
-                          Explore More
-                        </Button>
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                        onClick={() => handleCardClick(place._id)}
+                      >
+                        Explore More
+                      </Button>
                     </Box>
                   </CardContent>
                 </Card>
               </Grid>
             ))
           ) : (
-            <Typography className="no-results">
+            <Typography className="no-results" align="center">
               No destinations found.
             </Typography>
           )}

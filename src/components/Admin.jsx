@@ -423,7 +423,7 @@ const removeSurroundingImage = (surroundingIndex, imageIndex) => {
   );
 
   return (
-    <Box sx={{ padding: '70px', maxWidth: '800px', margin: 'auto' }}>
+    <Box sx={{ padding: '70px', maxWidth: '800px', margin: 'auto',backgroundColor:'white' }}>
       <Box sx={{ mb: 6 }}>
         <Typography variant="h4" gutterBottom>
           Admin: Add Place
